@@ -1,6 +1,6 @@
 cask "ccwidget" do
-  version "0.3.3"
-  sha256 "9a18c524652d2ee7998cd02639df5393332de8933364bbad035bbf34df5ed1b4"
+  version "0.3.4"
+  sha256 "241217069b2849f16e01603d5b339a30c375ad24cc3d0c86afb9b12d4c421ec3"
 
   url "https://github.com/davidkremlev/ccwidget/releases/download/v#{version}/CCWidget-#{version}.dmg"
   name "Usage Widget for Claude Code"
