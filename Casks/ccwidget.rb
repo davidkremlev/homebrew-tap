@@ -42,6 +42,16 @@ cask "ccwidget" do
     system_command "/usr/bin/osascript",
                    args:         ["-e", 'tell application id "dev.illvminat.ccwidget" to quit'],
                    must_succeed: false
+    # The upgrade's uninstall step (above) removes the exporter and the
+    # statusLine key on its way past. Since 0.3.5 the binary repairs that
+    # itself: the flag decides headlessly and exits — it restores setup when
+    # the tear-down was an upgrade's, and refuses when a person removed it
+    # through the app (the app leaves a marker). Do not ship this line to a
+    # cask version older than 0.3.5: earlier binaries do not know the flag
+    # and would start the GUI and never exit.
+    system_command "#{appdir}/CCWidget.app/Contents/MacOS/CCWidget",
+                   args:         ["--reinstall-exporter"],
+                   must_succeed: false
     system_command "/usr/bin/open", args: ["-a", "#{appdir}/CCWidget.app"]
   end
 
